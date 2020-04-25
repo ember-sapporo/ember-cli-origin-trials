@@ -1,7 +1,7 @@
 ember-cli-origin-trials
 ==============================================================================
 
-[Short description of the addon.]
+Add the `origin-trial` meta tags to index.html page of Ember.js application.
 
 
 Compatibility
@@ -23,8 +23,30 @@ ember install ember-cli-origin-trials
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+Add your tokens to `ENV.originTrials.tokens` in `config/environment.js`. Falsy values are automatically removed.
 
+``` js
+// config/environment.js
+module.exports = function(environment) {
+  let ENV = {
+    // ...
+
+    originTrials: {
+      tokens: [
+        'TOKEN_X',
+        'TOKEN_Y'
+      ]
+    }
+  };
+};
+```
+
+It will generate the following tags:
+
+``` html
+<meta http-equiv="origin-trial" content="TOKEN_X">
+<meta http-equiv="origin-trial" content="TOKEN_Y">
+```
 
 Contributing
 ------------------------------------------------------------------------------
